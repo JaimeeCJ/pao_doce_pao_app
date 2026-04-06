@@ -81,7 +81,7 @@ WindowsFormsPaoDoce/
 
 ## Banco de Dados
 
-1. Ajustar a connection string em `App.config` (usuario e senha do seu MySQL)
+1. Ajustar a connection string em `App.config` (usuario e senha do MySQL)
 
 ## FormExemplo
 
