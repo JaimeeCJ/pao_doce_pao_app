@@ -81,9 +81,7 @@ WindowsFormsPaoDoce/
 
 ## Banco de Dados
 
-1. Instalar MySQL 8.0
-2. Executar o script `database/01_schema.sql` no MySQL Workbench
-3. Ajustar a connection string em `App.config` (usuario e senha do seu MySQL)
+1. Ajustar a connection string em `App.config` (usuario e senha do seu MySQL)
 
 ## FormExemplo
 
