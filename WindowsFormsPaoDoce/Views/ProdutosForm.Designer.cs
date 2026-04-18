@@ -40,6 +40,7 @@ namespace WindowsFormsPaoDoce.Views
             this.txtNomeProduto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.gridDados = new System.Windows.Forms.DataGridView();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.panelCabecalho.SuspendLayout();
             this.grpCadastro.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -207,6 +208,7 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button3);
@@ -363,6 +365,14 @@ namespace WindowsFormsPaoDoce.Views
             this.gridDados.Size = new System.Drawing.Size(1080, 475);
             this.gridDados.TabIndex = 5;
             // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(128, 120);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(100, 30);
+            this.txtId.TabIndex = 6;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
+            // 
             // ProdutosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -378,6 +388,7 @@ namespace WindowsFormsPaoDoce.Views
             this.Name = "ProdutosForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos — Diogo";
+            this.Load += new System.EventHandler(this.ProdutosForm_Load);
             this.panelCabecalho.ResumeLayout(false);
             this.panelCabecalho.PerformLayout();
             this.grpCadastro.ResumeLayout(false);
@@ -414,5 +425,6 @@ namespace WindowsFormsPaoDoce.Views
         private System.Windows.Forms.TextBox txtNomeProduto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView gridDados;
+        private System.Windows.Forms.TextBox txtId;
     }
 }

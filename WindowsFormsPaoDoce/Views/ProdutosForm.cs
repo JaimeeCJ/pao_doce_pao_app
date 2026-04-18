@@ -29,5 +29,15 @@ namespace WindowsFormsPaoDoce.Views
         {
 
         }
+
+        private void txtId_TextChanged(object sender, System.EventArgs e)
+        {
+            
+        }
+
+        private void ProdutosForm_Load(object sender, System.EventArgs e)
+        {
+            txtId.Visible = false;
+        }
     }
 }
