@@ -1,5 +1,6 @@
 using MySql.Data.MySqlClient;
 using System;
+using System.CodeDom.Compiler;
 using System.Data;
 using System.Windows.Forms;
 
@@ -176,6 +177,47 @@ namespace WindowsFormsPaoDoce.Views
 
         private void btnAtualizar_Click_1(object sender, EventArgs e)
         {
+            if (!int.TryParse(txtId.Text, out int id))
+            {
+                MessageBox.Show("Selecione um produto válido.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNomeProduto.Text))
+            {
+                MessageBox.Show("O nome do produto é obrigatório.");
+                return;
+            }
+
+            if (!decimal.TryParse(txtPreco.Text, out decimal preco))
+            {
+                MessageBox.Show("Preço inválido.");
+                return;
+            }
+
+            if (!int.TryParse(txtQuantidade.Text, out int quantidade))
+            {
+                MessageBox.Show("Quantidade inválida.");
+                return;
+            }
+
+            if (!int.TryParse(txtEstoqueMinimo.Text, out int estoqueMin))
+            {
+                MessageBox.Show("Estoque mínimo inválido.");
+                return;
+            }
+
+            
+            DialogResult resultado = MessageBox.Show(
+                $"Deseja atualizar o produto:\n\nID: {id}\nNome: {txtNomeProduto.Text}?",
+                "Confirmar atualização",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado != DialogResult.Yes)
+                return;
+
             using (MySqlConnection conn = new MySqlConnection(conexao))
             {
                 try
@@ -183,41 +225,58 @@ namespace WindowsFormsPaoDoce.Views
                     conn.Open();
 
                     string sql = @"UPDATE produtos SET 
-                           nome = @nome,
-                           descricao = @descricao,
-                           preco_unitario = @preco,
-                           quantidade_atual = @quantidade,
-                           estoque_minimo = @estoqueMin,
-                           ativo = @ativo,
-                           atualizado_em = NOW()
-                           WHERE id = @id";
+                    nome = @nome,
+                    descricao = @descricao,
+                    preco_unitario = @preco,
+                    quantidade_atual = @quantidade,
+                    estoque_minimo = @estoqueMin,
+                    ativo = @ativo,
+                    atualizado_em = NOW()
+                    WHERE id = @id";
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                    cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@nome", txtNomeProduto.Text);
                     cmd.Parameters.AddWithValue("@descricao", txtDescricao.Text);
-                    cmd.Parameters.AddWithValue("@preco", decimal.Parse(txtPreco.Text));
-                    cmd.Parameters.AddWithValue("@quantidade", int.Parse(txtQuantidade.Text));
-                    cmd.Parameters.AddWithValue("@estoqueMin", int.Parse(txtEstoqueMinimo.Text));
+                    cmd.Parameters.AddWithValue("@preco", preco);
+                    cmd.Parameters.AddWithValue("@quantidade", quantidade);
+                    cmd.Parameters.AddWithValue("@estoqueMin", estoqueMin);
                     cmd.Parameters.AddWithValue("@ativo", chkAtivo.Checked);
 
-                    cmd.ExecuteNonQuery();
+                    int linhasAfetadas = cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Produto atualizado com sucesso!");
-                    ListarProdutos();
-                    LimparCampos();
+                    if (linhasAfetadas > 0)
+                    {
+                        MessageBox.Show("Produto atualizado com sucesso!");
+                        ListarProdutos();
+                        LimparCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhum produto foi atualizado. Verifique o ID.");
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro: " + ex.Message);
+                    MessageBox.Show("Erro real: " + ex.Message);
                 }
             }
-        }
+        
+    }
+        
 
         private void btnExclui_Click_1(object sender, EventArgs e)
         {
-       
+
+            DialogResult resultado = MessageBox.Show(
+               " Tem certeza que deseja excluir?"," Confirmar exclusão",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Warning
+               );
+
+            if (resultado != DialogResult.Yes)
+                return;
             using (MySqlConnection conn = new MySqlConnection(conexao))
             {
                 try
@@ -237,7 +296,7 @@ namespace WindowsFormsPaoDoce.Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro: " + ex.Message);
+                    MessageBox.Show("Erro real: " + ex.Message);
                 }
             }
     }
