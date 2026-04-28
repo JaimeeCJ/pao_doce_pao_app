@@ -1,3 +1,4 @@
+using MySql.Data.MySqlClient;
 using System;
 using System.Drawing;
 using System.IO;
@@ -9,8 +10,7 @@ namespace WindowsFormsPaoDoce.Views
 {
     public partial class LoginForm : Form
     {
-        private readonly AuthService _authService = new AuthService();
-
+        string conexao = "Server=62.171.167.217;Port=33060;Database=db_padaria;Uid=root_padaria;Pwd=Pad2026SecPad;";
         public LoginForm()
         {
             InitializeComponent();
@@ -52,24 +52,64 @@ namespace WindowsFormsPaoDoce.Views
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            long usuarioId;
-            string nomeUsuario;
-            bool autenticado = _authService.TentarAutenticar(txtLogin.Text, txtSenha.Text, out usuarioId, out nomeUsuario);
-            if (!autenticado)
+            string login = txtLogin.Text;
+            string senha = txtSenha.Text;
+
+            try
             {
-                MessageBox.Show("Usuario ou senha invalidos.", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                using (MySqlConnection conn = new MySqlConnection(conexao)) 
+                {
+                    conn.Open();
+
+                    string sql = "SELECT * FROM usuarios WHERE login = @login AND senha_hash = @senha";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn); 
+                    cmd.Parameters.AddWithValue("@login", login);
+                    cmd.Parameters.AddWithValue("@senha", senha);
+
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                 
+                        MainMenuForm tela = new MainMenuForm();
+                        tela.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuário ou senha inválidos!");
+                    }
+                }
             }
-
-            AppSession.IniciarSessao(usuarioId, nomeUsuario, txtLogin.Text.Trim());
-
-            Hide();
-            using (MainMenuForm menu = new MainMenuForm())
+            catch (Exception ex)
             {
-                menu.ShowDialog();
+                MessageBox.Show("Erro: " + ex.Message);
             }
+        }
 
-            Close();
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            txtSenha.UseSystemPasswordChar = true;
+        }
+
+        private void btnCadastro_Click(object sender, EventArgs e)
+        {
+            CadastroForm form  = new CadastroForm();
+            form.Show();
+            this.Hide();
+        }
+
+        private void chkMostrarSenha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMostrarSenha.Checked)
+            {
+                txtSenha.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtSenha.UseSystemPasswordChar = true;
+            }
         }
     }
 }
