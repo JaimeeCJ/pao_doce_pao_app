@@ -1,6 +1,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 
@@ -22,7 +23,7 @@ namespace WindowsFormsPaoDoce.Views
                 {
                     conn.Open();
 
-                    string query = "SELECT * FROM vw_estoque_atual";
+                    string query = "SELECT * FROM vw_quantidade_atual";
 
                     MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                     DataTable tabela = new DataTable();
@@ -35,6 +36,8 @@ namespace WindowsFormsPaoDoce.Views
                 {
                     MessageBox.Show("Erro: " + ex.Message);
                 }
+
+                
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -46,5 +49,33 @@ namespace WindowsFormsPaoDoce.Views
         {
             CarregarEstoque();
         }
+
+        
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            var row = dataGridView1.Rows[e.RowIndex];
+
+            if (!row.IsNewRow &&
+                row.Cells["quantidade_atual"].Value != DBNull.Value &&
+                row.Cells["estoque_minimo"].Value != DBNull.Value)
+            {
+                int atual = Convert.ToInt32(row.Cells["quantidade_atual"].Value);
+                int minimo = Convert.ToInt32(row.Cells["estoque_minimo"].Value);
+
+                if (atual <= minimo)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
+                }
+            }
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+    }
+
+    
+
