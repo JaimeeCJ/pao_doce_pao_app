@@ -116,6 +116,12 @@
     <EmbeddedResource Include="Views\FormExemplo.resx">
       <DependentUpon>FormExemplo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CadastroForm.resx">
+      <DependentUpon>CadastroForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ProdutosForm.resx">
       <DependentUpon>ProdutosForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +147,12 @@
     </Compile>
     <Compile Include="Views\FormExemplo.Designer.cs">
       <DependentUpon>FormExemplo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CadastroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CadastroForm.Designer.cs">
+      <DependentUpon>CadastroForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
