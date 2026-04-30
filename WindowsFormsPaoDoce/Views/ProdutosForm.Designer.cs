@@ -50,6 +50,7 @@ namespace WindowsFormsPaoDoce.Views
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.panelCabecalho.SuspendLayout();
             this.grpCadastro.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,8 +64,9 @@ namespace WindowsFormsPaoDoce.Views
             this.panelCabecalho.Controls.Add(this.lblTitulo);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
+            this.panelCabecalho.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelCabecalho.Name = "panelCabecalho";
-            this.panelCabecalho.Size = new System.Drawing.Size(859, 50);
+            this.panelCabecalho.Size = new System.Drawing.Size(1288, 77);
             this.panelCabecalho.TabIndex = 1;
             // 
             // grpCadastro
@@ -79,9 +81,11 @@ namespace WindowsFormsPaoDoce.Views
             this.grpCadastro.Controls.Add(this.txtNome);
             this.grpCadastro.Controls.Add(this.lblNome);
             this.grpCadastro.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.grpCadastro.Location = new System.Drawing.Point(122, -153);
+            this.grpCadastro.Location = new System.Drawing.Point(183, -235);
+            this.grpCadastro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpCadastro.Name = "grpCadastro";
-            this.grpCadastro.Size = new System.Drawing.Size(720, 120);
+            this.grpCadastro.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpCadastro.Size = new System.Drawing.Size(1080, 185);
             this.grpCadastro.TabIndex = 3;
             this.grpCadastro.TabStop = false;
             this.grpCadastro.Text = "Dados";
@@ -92,9 +96,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnLimpar.Location = new System.Drawing.Point(530, 68);
+            this.btnLimpar.Location = new System.Drawing.Point(795, 105);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(100, 36);
+            this.btnLimpar.Size = new System.Drawing.Size(150, 55);
             this.btnLimpar.TabIndex = 8;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
@@ -107,9 +112,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.btnExcluir.ForeColor = System.Drawing.Color.White;
-            this.btnExcluir.Location = new System.Drawing.Point(420, 68);
+            this.btnExcluir.Location = new System.Drawing.Point(630, 105);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(100, 36);
+            this.btnExcluir.Size = new System.Drawing.Size(150, 55);
             this.btnExcluir.TabIndex = 7;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
@@ -121,9 +127,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnEditar.Enabled = false;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnEditar.Location = new System.Drawing.Point(310, 68);
+            this.btnEditar.Location = new System.Drawing.Point(465, 105);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(100, 36);
+            this.btnEditar.Size = new System.Drawing.Size(150, 55);
             this.btnEditar.TabIndex = 6;
             this.btnEditar.Text = "Atualizar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -134,9 +141,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnSalvar.Location = new System.Drawing.Point(200, 68);
+            this.btnSalvar.Location = new System.Drawing.Point(300, 105);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(100, 36);
+            this.btnSalvar.Size = new System.Drawing.Size(150, 55);
             this.btnSalvar.TabIndex = 5;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
@@ -147,9 +155,10 @@ namespace WindowsFormsPaoDoce.Views
             this.chkAtivo.Checked = true;
             this.chkAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAtivo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.chkAtivo.Location = new System.Drawing.Point(15, 68);
+            this.chkAtivo.Location = new System.Drawing.Point(22, 105);
+            this.chkAtivo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkAtivo.Name = "chkAtivo";
-            this.chkAtivo.Size = new System.Drawing.Size(71, 27);
+            this.chkAtivo.Size = new System.Drawing.Size(85, 32);
             this.chkAtivo.TabIndex = 4;
             this.chkAtivo.Text = "Ativo";
             this.chkAtivo.UseVisualStyleBackColor = true;
@@ -157,36 +166,40 @@ namespace WindowsFormsPaoDoce.Views
             // txtDescricao
             // 
             this.txtDescricao.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDescricao.Location = new System.Drawing.Point(460, 29);
+            this.txtDescricao.Location = new System.Drawing.Point(690, 45);
+            this.txtDescricao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(240, 30);
+            this.txtDescricao.Size = new System.Drawing.Size(358, 34);
             this.txtDescricao.TabIndex = 3;
             // 
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDescricao.Location = new System.Drawing.Point(375, 32);
+            this.lblDescricao.Location = new System.Drawing.Point(562, 49);
+            this.lblDescricao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(87, 23);
+            this.lblDescricao.Size = new System.Drawing.Size(100, 28);
             this.lblDescricao.TabIndex = 2;
             this.lblDescricao.Text = "Descricao:";
             // 
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNome.Location = new System.Drawing.Point(75, 29);
+            this.txtNome.Location = new System.Drawing.Point(112, 45);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(280, 30);
+            this.txtNome.Size = new System.Drawing.Size(418, 34);
             this.txtNome.TabIndex = 1;
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblNome.Location = new System.Drawing.Point(15, 32);
+            this.lblNome.Location = new System.Drawing.Point(22, 49);
+            this.lblNome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(61, 23);
+            this.lblNome.Size = new System.Drawing.Size(70, 28);
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome:";
             // 
@@ -195,9 +208,10 @@ namespace WindowsFormsPaoDoce.Views
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(20, 11);
+            this.lblTitulo.Location = new System.Drawing.Point(30, 17);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(296, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(346, 45);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Cadastro de Produtos";
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
@@ -223,9 +237,11 @@ namespace WindowsFormsPaoDoce.Views
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(10, 57);
+            this.groupBox1.Location = new System.Drawing.Point(15, 88);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(839, 133);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1258, 205);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados";
@@ -234,10 +250,9 @@ namespace WindowsFormsPaoDoce.Views
             // btnBusca
             // 
             this.btnBusca.Image = ((System.Drawing.Image)(resources.GetObject("btnBusca.Image")));
-            this.btnBusca.Location = new System.Drawing.Point(126, 95);
-            this.btnBusca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBusca.Location = new System.Drawing.Point(189, 146);
             this.btnBusca.Name = "btnBusca";
-            this.btnBusca.Size = new System.Drawing.Size(30, 25);
+            this.btnBusca.Size = new System.Drawing.Size(45, 38);
             this.btnBusca.TabIndex = 7;
             this.btnBusca.UseVisualStyleBackColor = true;
             this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
@@ -245,10 +260,11 @@ namespace WindowsFormsPaoDoce.Views
             // btnExclui
             // 
             this.btnExclui.BackColor = System.Drawing.Color.DarkRed;
-            this.btnExclui.Location = new System.Drawing.Point(422, 68);
-            this.btnExclui.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExclui.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExclui.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExclui.Location = new System.Drawing.Point(633, 105);
             this.btnExclui.Name = "btnExclui";
-            this.btnExclui.Size = new System.Drawing.Size(100, 36);
+            this.btnExclui.Size = new System.Drawing.Size(150, 55);
             this.btnExclui.TabIndex = 17;
             this.btnExclui.Text = "Excluir";
             this.btnExclui.UseVisualStyleBackColor = false;
@@ -256,19 +272,18 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // txtBusca
             // 
-            this.txtBusca.Location = new System.Drawing.Point(15, 96);
-            this.txtBusca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBusca.Location = new System.Drawing.Point(22, 148);
             this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(108, 30);
+            this.txtBusca.Size = new System.Drawing.Size(160, 34);
             this.txtBusca.TabIndex = 6;
             this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(313, 68);
-            this.btnAtualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAtualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAtualizar.Location = new System.Drawing.Point(470, 105);
             this.btnAtualizar.Name = "btnAtualizar";
-            this.btnAtualizar.Size = new System.Drawing.Size(100, 36);
+            this.btnAtualizar.Size = new System.Drawing.Size(150, 55);
             this.btnAtualizar.TabIndex = 16;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
@@ -280,9 +295,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnLimpa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpa.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnLimpa.Location = new System.Drawing.Point(530, 68);
+            this.btnLimpa.Location = new System.Drawing.Point(790, 106);
+            this.btnLimpa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLimpa.Name = "btnLimpa";
-            this.btnLimpa.Size = new System.Drawing.Size(100, 36);
+            this.btnLimpa.Size = new System.Drawing.Size(150, 55);
             this.btnLimpa.TabIndex = 8;
             this.btnLimpa.Text = "Limpar";
             this.btnLimpa.UseVisualStyleBackColor = false;
@@ -294,9 +310,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnCadastrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnCadastrar.Location = new System.Drawing.Point(200, 68);
+            this.btnCadastrar.Location = new System.Drawing.Point(300, 105);
+            this.btnCadastrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(100, 36);
+            this.btnCadastrar.Size = new System.Drawing.Size(150, 55);
             this.btnCadastrar.TabIndex = 5;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = false;
@@ -304,75 +321,71 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // txtNomeProduto
             // 
-            this.txtNomeProduto.Location = new System.Drawing.Point(64, 29);
-            this.txtNomeProduto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNomeProduto.Location = new System.Drawing.Point(96, 45);
             this.txtNomeProduto.Name = "txtNomeProduto";
-            this.txtNomeProduto.Size = new System.Drawing.Size(86, 30);
+            this.txtNomeProduto.Size = new System.Drawing.Size(127, 34);
             this.txtNomeProduto.TabIndex = 15;
+            this.txtNomeProduto.TextChanged += new System.EventHandler(this.txtNomeProduto_TextChanged);
             // 
             // txtEstoqueMinimo
             // 
-            this.txtEstoqueMinimo.Location = new System.Drawing.Point(565, 29);
-            this.txtEstoqueMinimo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEstoqueMinimo.Location = new System.Drawing.Point(848, 45);
             this.txtEstoqueMinimo.Name = "txtEstoqueMinimo";
-            this.txtEstoqueMinimo.Size = new System.Drawing.Size(76, 30);
+            this.txtEstoqueMinimo.Size = new System.Drawing.Size(112, 34);
             this.txtEstoqueMinimo.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label5.Location = new System.Drawing.Point(457, 32);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(686, 49);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 23);
+            this.label5.Size = new System.Drawing.Size(158, 28);
             this.label5.TabIndex = 13;
             this.label5.Text = "Estoque mínimo:";
             // 
             // txtQuantidade
             // 
-            this.txtQuantidade.Location = new System.Drawing.Point(377, 29);
-            this.txtQuantidade.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtQuantidade.Location = new System.Drawing.Point(566, 45);
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(76, 30);
+            this.txtQuantidade.Size = new System.Drawing.Size(112, 34);
             this.txtQuantidade.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label4.Location = new System.Drawing.Point(295, 32);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(442, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 23);
+            this.label4.Size = new System.Drawing.Size(119, 28);
             this.label4.TabIndex = 11;
             this.label4.Text = "Quantidade:";
             // 
             // txtPreco
             // 
-            this.txtPreco.Location = new System.Drawing.Point(215, 29);
-            this.txtPreco.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPreco.Location = new System.Drawing.Point(322, 45);
             this.txtPreco.Name = "txtPreco";
-            this.txtPreco.Size = new System.Drawing.Size(76, 30);
+            this.txtPreco.Size = new System.Drawing.Size(112, 34);
             this.txtPreco.TabIndex = 10;
+            this.txtPreco.TextChanged += new System.EventHandler(this.txtPreco_TextChanged);
+            this.txtPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreco_KeyPress);
+            this.txtPreco.Leave += new System.EventHandler(this.txtPreco_Leave);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label3.Location = new System.Drawing.Point(168, 32);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(252, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 23);
+            this.label3.Size = new System.Drawing.Size(65, 28);
             this.label3.TabIndex = 9;
             this.label3.Text = "Preço:";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(114, 67);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Location = new System.Drawing.Point(171, 103);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(68, 30);
+            this.txtId.Size = new System.Drawing.Size(100, 34);
             this.txtId.TabIndex = 6;
             this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
@@ -382,9 +395,10 @@ namespace WindowsFormsPaoDoce.Views
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkBox1.Location = new System.Drawing.Point(15, 68);
+            this.checkBox1.Location = new System.Drawing.Point(22, 105);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(71, 27);
+            this.checkBox1.Size = new System.Drawing.Size(85, 32);
             this.checkBox1.TabIndex = 4;
             this.checkBox1.Text = "Ativo";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -392,18 +406,20 @@ namespace WindowsFormsPaoDoce.Views
             // txtDescricaoProduto
             // 
             this.txtDescricaoProduto.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDescricaoProduto.Location = new System.Drawing.Point(717, 29);
+            this.txtDescricaoProduto.Location = new System.Drawing.Point(1076, 45);
+            this.txtDescricaoProduto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescricaoProduto.Name = "txtDescricaoProduto";
-            this.txtDescricaoProduto.Size = new System.Drawing.Size(117, 30);
+            this.txtDescricaoProduto.Size = new System.Drawing.Size(174, 34);
             this.txtDescricaoProduto.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label1.Location = new System.Drawing.Point(646, 32);
+            this.label1.Location = new System.Drawing.Point(969, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 23);
+            this.label1.Size = new System.Drawing.Size(100, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Descricao:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -412,9 +428,10 @@ namespace WindowsFormsPaoDoce.Views
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label2.Location = new System.Drawing.Point(13, 32);
+            this.label2.Location = new System.Drawing.Point(20, 49);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 23);
+            this.label2.Size = new System.Drawing.Size(70, 28);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nome:";
             // 
@@ -427,7 +444,8 @@ namespace WindowsFormsPaoDoce.Views
             this.dgvProdutos.ColumnHeadersHeight = 36;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProdutos.EnableHeadersVisualStyles = false;
-            this.dgvProdutos.Location = new System.Drawing.Point(10, 210);
+            this.dgvProdutos.Location = new System.Drawing.Point(37, 323);
+            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvProdutos.MultiSelect = false;
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
@@ -435,21 +453,35 @@ namespace WindowsFormsPaoDoce.Views
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 30;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(839, 353);
+            this.dgvProdutos.Size = new System.Drawing.Size(1194, 440);
             this.dgvProdutos.TabIndex = 5;
             this.dgvProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellContentClick);
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnVoltar.Location = new System.Drawing.Point(1053, 804);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(167, 42);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar ao Menu";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // ProdutosForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(859, 574);
+            this.ClientSize = new System.Drawing.Size(1288, 883);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panelCabecalho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProdutosForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos — Diogo";
@@ -499,5 +531,6 @@ namespace WindowsFormsPaoDoce.Views
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnBusca;
         private System.Windows.Forms.TextBox txtBusca;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }

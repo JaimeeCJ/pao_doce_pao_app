@@ -2,8 +2,10 @@ using MySql.Data.MySqlClient;
 using System;
 using System.CodeDom.Compiler;
 using System.Data;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
-
+using System.Linq;
 
 namespace WindowsFormsPaoDoce.Views
 {
@@ -63,6 +65,21 @@ namespace WindowsFormsPaoDoce.Views
 
                 da.Fill(dt);
                 dgvProdutos.DataSource = dt;
+
+                dgvProdutos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                dgvProdutos.Columns["id"].HeaderText = "Código";
+                dgvProdutos.Columns["nome"].HeaderText = "Nome";
+                dgvProdutos.Columns["ativo"].HeaderText = "Ativo";
+                dgvProdutos.Columns["estoque_minimo"].HeaderText = "Estoque Mínimo";
+                dgvProdutos.Columns["descricao"].HeaderText = "Descrição";
+                dgvProdutos.Columns["preco_unitario"].HeaderText = "Preço";
+                dgvProdutos.Columns["preco_unitario"].DefaultCellStyle.Format = "C2";
+                dgvProdutos.Columns["categoria_id"].HeaderText = "Código Categoria";
+                dgvProdutos.Columns["criado_em"].HeaderText = "Criado em";
+                dgvProdutos.Columns["atualizado_em"].HeaderText = "Atualizado em";
+
+                dgvProdutos.Columns["quantidade_atual"].Visible = false;
             }
         }
 
@@ -99,7 +116,9 @@ namespace WindowsFormsPaoDoce.Views
 
         private void ProdutosForm_Load(object sender, System.EventArgs e)
         {
-           
+            
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
             TestarConexao();
             ListarProdutos();
 
@@ -126,8 +145,8 @@ namespace WindowsFormsPaoDoce.Views
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                     cmd.Parameters.AddWithValue("@nome", nome);
-                    cmd.Parameters.AddWithValue("@descricao", txtDescricao.Text);
-                    cmd.Parameters.AddWithValue("@preco", decimal.Parse(txtPreco.Text));
+                    cmd.Parameters.AddWithValue("@descricao", txtDescricaoProduto.Text);
+                    cmd.Parameters.AddWithValue("@preco", decimal.Parse(txtPreco.Text, NumberStyles.Currency));
                     cmd.Parameters.AddWithValue("@quantidade", int.Parse(txtQuantidade.Text));
                     cmd.Parameters.AddWithValue("@estoqueMin", int.Parse(txtEstoqueMinimo.Text));
                     cmd.Parameters.AddWithValue("@ativo", chkAtivo.Checked);
@@ -166,7 +185,7 @@ namespace WindowsFormsPaoDoce.Views
             {
                 txtId.Text = dgvProdutos.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 txtNomeProduto.Text = dgvProdutos.Rows[e.RowIndex].Cells["nome"].Value.ToString();
-                txtDescricao.Text = dgvProdutos.Rows[e.RowIndex].Cells["descricao"].Value.ToString();
+                txtDescricaoProduto.Text = dgvProdutos.Rows[e.RowIndex].Cells["descricao"].Value.ToString();
                 txtPreco.Text = dgvProdutos.Rows[e.RowIndex].Cells["preco_unitario"].Value.ToString();
                 txtQuantidade.Text = dgvProdutos.Rows[e.RowIndex].Cells["quantidade_atual"].Value.ToString();
                 txtEstoqueMinimo.Text = dgvProdutos.Rows[e.RowIndex].Cells["estoque_minimo"].Value.ToString();
@@ -353,6 +372,52 @@ namespace WindowsFormsPaoDoce.Views
                     
                 }
             }
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Close();
+            
+        }
+
+        private void txtNomeProduto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPreco_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtPreco_TextChanged(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtPreco.Text))
+                return;
+
+            txtPreco.TextChanged -= txtPreco_TextChanged;
+
+            string numeros = new string(txtPreco.Text.Where(char.IsDigit).ToArray());
+
+            if (string.IsNullOrEmpty(numeros))
+            {
+                txtPreco.Text = "";
+            }
+            else
+            {
+                decimal valor = decimal.Parse(numeros) / 100;
+
+                txtPreco.Text = valor.ToString("C2", new CultureInfo("pt-BR"));
+                txtPreco.SelectionStart = txtPreco.Text.Length;
+            }
+
+            txtPreco.TextChanged += txtPreco_TextChanged;
         }
     }
 }
