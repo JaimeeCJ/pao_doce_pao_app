@@ -18,22 +18,20 @@ namespace WindowsFormsPaoDoce.Views
         private void InitializeComponent()
         {
             this.btnVoltar = new System.Windows.Forms.Button();
-            this.gridDados = new System.Windows.Forms.DataGridView();
+            this.dgvCategorias = new System.Windows.Forms.DataGridView();
             this.grpCadastro = new System.Windows.Forms.GroupBox();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.chkAtivo = new System.Windows.Forms.CheckBox();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.lblDescricao = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.panelCabecalho = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gridDados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.grpCadastro.SuspendLayout();
             this.panelCabecalho.SuspendLayout();
             this.SuspendLayout();
@@ -53,38 +51,36 @@ namespace WindowsFormsPaoDoce.Views
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // gridDados
+            // dgvCategorias
             // 
-            this.gridDados.AllowUserToAddRows = false;
-            this.gridDados.AllowUserToDeleteRows = false;
-            this.gridDados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridDados.BackgroundColor = System.Drawing.Color.White;
-            this.gridDados.ColumnHeadersHeight = 36;
-            this.gridDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.gridDados.EnableHeadersVisualStyles = false;
-            this.gridDados.Location = new System.Drawing.Point(36, 279);
-            this.gridDados.Margin = new System.Windows.Forms.Padding(4);
-            this.gridDados.MultiSelect = false;
-            this.gridDados.Name = "gridDados";
-            this.gridDados.ReadOnly = true;
-            this.gridDados.RowHeadersVisible = false;
-            this.gridDados.RowHeadersWidth = 51;
-            this.gridDados.RowTemplate.Height = 30;
-            this.gridDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDados.Size = new System.Drawing.Size(1092, 323);
-            this.gridDados.TabIndex = 6;
-            this.gridDados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDados_CellContentClick);
+            this.dgvCategorias.AllowUserToAddRows = false;
+            this.dgvCategorias.AllowUserToDeleteRows = false;
+            this.dgvCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCategorias.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCategorias.ColumnHeadersHeight = 36;
+            this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvCategorias.EnableHeadersVisualStyles = false;
+            this.dgvCategorias.Location = new System.Drawing.Point(27, 279);
+            this.dgvCategorias.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvCategorias.MultiSelect = false;
+            this.dgvCategorias.Name = "dgvCategorias";
+            this.dgvCategorias.ReadOnly = true;
+            this.dgvCategorias.RowHeadersVisible = false;
+            this.dgvCategorias.RowHeadersWidth = 51;
+            this.dgvCategorias.RowTemplate.Height = 30;
+            this.dgvCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCategorias.Size = new System.Drawing.Size(1101, 323);
+            this.dgvCategorias.TabIndex = 6;
+            this.dgvCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDados_CellContentClick);
             // 
             // grpCadastro
             // 
-            this.grpCadastro.Controls.Add(this.txtId);
-            this.grpCadastro.Controls.Add(this.btnLimpar);
             this.grpCadastro.Controls.Add(this.btnExcluir);
             this.grpCadastro.Controls.Add(this.btnEditar);
+            this.grpCadastro.Controls.Add(this.txtId);
+            this.grpCadastro.Controls.Add(this.btnLimpar);
             this.grpCadastro.Controls.Add(this.btnSalvar);
             this.grpCadastro.Controls.Add(this.chkAtivo);
-            this.grpCadastro.Controls.Add(this.txtDescricao);
-            this.grpCadastro.Controls.Add(this.lblDescricao);
             this.grpCadastro.Controls.Add(this.txtNome);
             this.grpCadastro.Controls.Add(this.lblNome);
             this.grpCadastro.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -98,13 +94,44 @@ namespace WindowsFormsPaoDoce.Views
             this.grpCadastro.Text = "Dados";
             this.grpCadastro.Enter += new System.EventHandler(this.grpCadastro_Enter);
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.Color.Red;
+            this.btnExcluir.Location = new System.Drawing.Point(600, 82);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(141, 46);
+            this.btnExcluir.TabIndex = 11;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(440, 84);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(129, 46);
+            this.btnEditar.TabIndex = 10;
+            this.btnEditar.Text = "Atualizar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // txtId
+            // 
+            this.txtId.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtId.Location = new System.Drawing.Point(99, 84);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(121, 30);
+            this.txtId.TabIndex = 9;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
+            // 
             // btnLimpar
             // 
             this.btnLimpar.BackColor = System.Drawing.Color.White;
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnLimpar.Location = new System.Drawing.Point(707, 84);
+            this.btnLimpar.Location = new System.Drawing.Point(794, 84);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(133, 44);
@@ -112,39 +139,6 @@ namespace WindowsFormsPaoDoce.Views
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluir.Enabled = false;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnExcluir.ForeColor = System.Drawing.Color.White;
-            this.btnExcluir.Location = new System.Drawing.Point(560, 84);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(133, 44);
-            this.btnExcluir.TabIndex = 7;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.Enabled = false;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnEditar.Location = new System.Drawing.Point(413, 84);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(133, 44);
-            this.btnEditar.TabIndex = 6;
-            this.btnEditar.Text = "Atualizar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnSalvar
             // 
@@ -167,33 +161,13 @@ namespace WindowsFormsPaoDoce.Views
             this.chkAtivo.Checked = true;
             this.chkAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAtivo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.chkAtivo.Location = new System.Drawing.Point(20, 84);
+            this.chkAtivo.Location = new System.Drawing.Point(515, 39);
             this.chkAtivo.Margin = new System.Windows.Forms.Padding(4);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Size = new System.Drawing.Size(71, 27);
             this.chkAtivo.TabIndex = 4;
             this.chkAtivo.Text = "Ativo";
             this.chkAtivo.UseVisualStyleBackColor = true;
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDescricao.Location = new System.Drawing.Point(613, 36);
-            this.txtDescricao.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(319, 30);
-            this.txtDescricao.TabIndex = 3;
-            // 
-            // lblDescricao
-            // 
-            this.lblDescricao.AutoSize = true;
-            this.lblDescricao.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDescricao.Location = new System.Drawing.Point(500, 39);
-            this.lblDescricao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDescricao.Name = "lblDescricao";
-            this.lblDescricao.Size = new System.Drawing.Size(87, 23);
-            this.lblDescricao.TabIndex = 2;
-            this.lblDescricao.Text = "Descricao:";
             // 
             // txtNome
             // 
@@ -251,16 +225,6 @@ namespace WindowsFormsPaoDoce.Views
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Exemplo de CRUD";
             // 
-            // txtId
-            // 
-            this.txtId.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtId.Location = new System.Drawing.Point(99, 84);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(121, 30);
-            this.txtId.TabIndex = 9;
-            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
-            // 
             // CategoriasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -268,7 +232,7 @@ namespace WindowsFormsPaoDoce.Views
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1160, 708);
             this.Controls.Add(this.btnVoltar);
-            this.Controls.Add(this.gridDados);
+            this.Controls.Add(this.dgvCategorias);
             this.Controls.Add(this.grpCadastro);
             this.Controls.Add(this.panelCabecalho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -278,7 +242,7 @@ namespace WindowsFormsPaoDoce.Views
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Categorias — Artur";
             this.Load += new System.EventHandler(this.CategoriasForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gridDados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.grpCadastro.ResumeLayout(false);
             this.grpCadastro.PerformLayout();
             this.panelCabecalho.ResumeLayout(false);
@@ -290,20 +254,18 @@ namespace WindowsFormsPaoDoce.Views
         #endregion
 
         private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.DataGridView gridDados;
+        private System.Windows.Forms.DataGridView dgvCategorias;
         private System.Windows.Forms.GroupBox grpCadastro;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.CheckBox chkAtivo;
-        private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.Label lblDescricao;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Panel panelCabecalho;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }

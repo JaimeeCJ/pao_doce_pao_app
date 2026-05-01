@@ -1,5 +1,6 @@
 using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace WindowsFormsPaoDoce.Views
@@ -12,6 +13,35 @@ namespace WindowsFormsPaoDoce.Views
             InitializeComponent();
         }
 
+        private void LimparCampos()
+        {
+           
+            txtId.Clear();
+            chkAtivo.Checked = false;
+            txtNome.Clear();
+        }
+        private void CarregarCategorias()
+        {
+            using (MySqlConnection conn = new MySqlConnection(conexao))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string sql = "SELECT * FROM categorias";
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dgvCategorias.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao carregar: " + ex.Message);
+                }
+            }
+        }
         private void TestarConexao()
         {
 
@@ -31,8 +61,9 @@ namespace WindowsFormsPaoDoce.Views
         }
         private void CategoriasForm_Load(object sender, System.EventArgs e)
         {
+            CarregarCategorias();
             txtId.Visible = false;
-            gridDados();
+            TestarConexao();
         }
 
         private void btnSalvar_Click(object sender, System.EventArgs e)
@@ -44,21 +75,22 @@ namespace WindowsFormsPaoDoce.Views
                     conn.Open();
 
                     string sql = @"INSERT INTO categorias 
-                           (nome, descricao, ativo) 
-                           VALUES (@nome, @descricao, @ativo)";
+                           (nome, ativo, criado_em, atualizado_em) 
+                           VALUES (@nome, @ativo, NOW() , NOW() )";
 
                     using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
                         cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = txtNome.Text;
-                        cmd.Parameters.Add("@descricao", MySqlDbType.VarChar).Value = txtDescricao.Text;
                         cmd.Parameters.Add("@ativo", MySqlDbType.Bit).Value = chkAtivo.Checked;
+                       
 
                         cmd.ExecuteNonQuery();
                     }
 
                     MessageBox.Show("Salvo com sucesso!");
                     btnLimpar.Show();
-                    CarregarGrid(); // opcional
+                    CarregarCategorias();
+                    LimparCampos();
                 }
                 catch (Exception ex)
                 {
@@ -67,28 +99,7 @@ namespace WindowsFormsPaoDoce.Views
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            using (MySqlConnection conn = new MySqlConnection(conexao))
-                {
-                conn.Open();
-
-                string sql = @"UPTADE categorias SET nome=@nome, descriçao=@descriçao, ativo=@ativo WHERE id=@id";
-
-            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                {
-                    cmd.Parameters.AddWithValue("@nome", txtNome.Text);
-                    cmd.Parameters.AddWithValue("@descriçao", txtDescricao.Text);
-                    cmd.Parameters.AddWithValue("@ativo", chkAtivo.Text);
-                    cmd.Parameters.AddWithValue("@id", txtId);
-
-                    cmd.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Atualizado!");
-                gridDados();
-        }
-    }
+   
 
         private void txtId_TextChanged(object sender, EventArgs e)
         {
@@ -97,19 +108,71 @@ namespace WindowsFormsPaoDoce.Views
 
         private void gridDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (MySqlConnection coon = new MySqlConnection(conexao))
+            if (e.RowIndex >= 0)
             {
-                coon.Open();
+                DataGridViewRow row = dgvCategorias.Rows[e.RowIndex];
 
-                string sql = "SELECT * FROM categorias";
-
-                MySqlDataAdapter da = new MySqlDataAdapter(sql, coon);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                DataGridView.DataSource = dt;
+                txtId.Text = Convert.ToString(row.Cells["id"].Value);
+                txtNome.Text = row.Cells["nome"].Value.ToString();
+                chkAtivo.Checked = Convert.ToBoolean(row.Cells["ativo"].Value);
             }
         }
+
+       
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+
+        private void grpCadastro_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection conn = new MySqlConnection(conexao))
+            {
+                conn.Open();
+
+                string sql = @"UPDATE categorias 
+SET nome = @nome, 
+    atualizado_em = NOW(), 
+    ativo = @ativo 
+WHERE id = @id";
+
+                try
+                {
+
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+                        cmd.Parameters.AddWithValue("@ativo", chkAtivo.Checked);
+                        cmd.Parameters.AddWithValue("@id", txtId.Text);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Atualizado!");
+                    CarregarCategorias();
+                    LimparCampos();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao atualizar: " + ex.Message);
+                }
+            }
+        }
+        
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -123,33 +186,15 @@ namespace WindowsFormsPaoDoce.Views
 
                     using (MySqlCommand cmd = new MySqlCommand(sql, coon))
                     {
-                        cmd.Parameters.AddWithValue("@id", txtId);
-                        cmd.ExecuteNonQuery ();
+                        cmd.Parameters.AddWithValue("@id", txtId.Text);
+                        cmd.ExecuteNonQuery();
                     }
                 }
 
                 MessageBox.Show("Excluído!");
-                gridDados();
+                CarregarCategorias();
+                LimparCampos();
             }
-
-
-        }
-
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            txtNome.Clear();
-            txtDescricao.Clear();
-            chkAtivo.Checked = false;
-        }
-
-        private void grpCadastro_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
