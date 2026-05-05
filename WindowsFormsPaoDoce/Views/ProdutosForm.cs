@@ -6,6 +6,8 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
+using Mysqlx.Connection;
+using System.Collections.Specialized;
 
 namespace WindowsFormsPaoDoce.Views
 {
@@ -19,6 +21,29 @@ namespace WindowsFormsPaoDoce.Views
 
             InitializeComponent();
         }
+
+        private void CarregarCategorias()
+        {
+            using (MySqlConnection conn = new MySqlConnection(conexao))
+            {
+                conn.Open();
+
+                string sql = "Select id, nome FROM categorias  WHERE ativo = 1";
+
+                MySqlDataAdapter da = new MySqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+
+                cmbCategoria.DataSource = dt;
+                cmbCategoria.DisplayMember = "nome"; 
+                cmbCategoria.ValueMember = "id";
+
+            }
+        }
+
+
+
 
         private void LimparCampos()
         {
@@ -121,7 +146,7 @@ namespace WindowsFormsPaoDoce.Views
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
             TestarConexao();
             ListarProdutos();
-
+            CarregarCategorias();
             txtId.Visible = false;
 
         }
@@ -150,7 +175,7 @@ namespace WindowsFormsPaoDoce.Views
                     cmd.Parameters.AddWithValue("@quantidade", int.Parse(txtQuantidade.Text));
                     cmd.Parameters.AddWithValue("@estoqueMin", int.Parse(txtEstoqueMinimo.Text));
                     cmd.Parameters.AddWithValue("@ativo", chkAtivo.Checked);
-                    cmd.Parameters.AddWithValue("@categoria", 1);
+                    cmd.Parameters.AddWithValue("@categoria", cmbCategoria.SelectedValue);
 
 
                     if (string.IsNullOrWhiteSpace(txtNomeProduto.Text))
@@ -207,8 +232,7 @@ namespace WindowsFormsPaoDoce.Views
                 MessageBox.Show("O nome do produto é obrigatório.");
                 return;
             }
-
-            if (!decimal.TryParse(txtPreco.Text, out decimal preco))
+            if (!decimal.TryParse(txtPreco.Text, NumberStyles.Currency, new CultureInfo("pt-BR"), out decimal preco))
             {
                 MessageBox.Show("Preço inválido.");
                 return;
@@ -262,7 +286,7 @@ namespace WindowsFormsPaoDoce.Views
                     cmd.Parameters.AddWithValue("@quantidade", quantidade);
                     cmd.Parameters.AddWithValue("@estoqueMin", estoqueMin);
                     cmd.Parameters.AddWithValue("@ativo", chkAtivo.Checked);
-
+                   
                     int linhasAfetadas = cmd.ExecuteNonQuery();
 
                     if (linhasAfetadas > 0)
@@ -418,6 +442,11 @@ namespace WindowsFormsPaoDoce.Views
             }
 
             txtPreco.TextChanged += txtPreco_TextChanged;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -19,6 +19,7 @@ namespace WindowsFormsPaoDoce.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProdutosForm));
             this.panelCabecalho = new System.Windows.Forms.Panel();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.grpCadastro = new System.Windows.Forms.GroupBox();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -31,6 +32,8 @@ namespace WindowsFormsPaoDoce.Views
             this.lblNome = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.btnBusca = new System.Windows.Forms.Button();
             this.btnExclui = new System.Windows.Forms.Button();
             this.txtBusca = new System.Windows.Forms.TextBox();
@@ -50,7 +53,6 @@ namespace WindowsFormsPaoDoce.Views
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.btnVoltar = new System.Windows.Forms.Button();
             this.panelCabecalho.SuspendLayout();
             this.grpCadastro.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -60,14 +62,29 @@ namespace WindowsFormsPaoDoce.Views
             // panelCabecalho
             // 
             this.panelCabecalho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(181)))), ((int)(((byte)(95)))));
+            this.panelCabecalho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCabecalho.Controls.Add(this.btnVoltar);
             this.panelCabecalho.Controls.Add(this.grpCadastro);
             this.panelCabecalho.Controls.Add(this.lblTitulo);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
             this.panelCabecalho.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelCabecalho.Name = "panelCabecalho";
-            this.panelCabecalho.Size = new System.Drawing.Size(1288, 77);
+            this.panelCabecalho.Size = new System.Drawing.Size(1300, 77);
             this.panelCabecalho.TabIndex = 1;
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnVoltar.Location = new System.Drawing.Point(1041, 17);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(234, 42);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar ao Menu";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // grpCadastro
             // 
@@ -208,7 +225,7 @@ namespace WindowsFormsPaoDoce.Views
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(30, 17);
+            this.lblTitulo.Location = new System.Drawing.Point(29, 14);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(346, 45);
@@ -218,6 +235,8 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cmbCategoria);
             this.groupBox1.Controls.Add(this.btnBusca);
             this.groupBox1.Controls.Add(this.btnExclui);
             this.groupBox1.Controls.Add(this.txtBusca);
@@ -247,10 +266,30 @@ namespace WindowsFormsPaoDoce.Views
             this.groupBox1.Text = "Dados";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(20, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 28);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Categoria:";
+            // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(127, 102);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(127, 36);
+            this.cmbCategoria.TabIndex = 18;
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // btnBusca
             // 
             this.btnBusca.Image = ((System.Drawing.Image)(resources.GetObject("btnBusca.Image")));
-            this.btnBusca.Location = new System.Drawing.Point(189, 146);
+            this.btnBusca.Location = new System.Drawing.Point(1140, 112);
             this.btnBusca.Name = "btnBusca";
             this.btnBusca.Size = new System.Drawing.Size(45, 38);
             this.btnBusca.TabIndex = 7;
@@ -272,7 +311,7 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // txtBusca
             // 
-            this.txtBusca.Location = new System.Drawing.Point(22, 148);
+            this.txtBusca.Location = new System.Drawing.Point(974, 115);
             this.txtBusca.Name = "txtBusca";
             this.txtBusca.Size = new System.Drawing.Size(160, 34);
             this.txtBusca.TabIndex = 6;
@@ -383,7 +422,7 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(171, 103);
+            this.txtId.Location = new System.Drawing.Point(974, 155);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 34);
             this.txtId.TabIndex = 6;
@@ -395,7 +434,7 @@ namespace WindowsFormsPaoDoce.Views
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkBox1.Location = new System.Drawing.Point(22, 105);
+            this.checkBox1.Location = new System.Drawing.Point(25, 155);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(85, 32);
@@ -453,30 +492,16 @@ namespace WindowsFormsPaoDoce.Views
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 30;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1194, 440);
+            this.dgvProdutos.Size = new System.Drawing.Size(1194, 376);
             this.dgvProdutos.TabIndex = 5;
             this.dgvProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellContentClick);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnVoltar.Location = new System.Drawing.Point(1053, 804);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(167, 42);
-            this.btnVoltar.TabIndex = 6;
-            this.btnVoltar.Text = "Voltar ao Menu";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // ProdutosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1288, 883);
-            this.Controls.Add(this.btnVoltar);
+            this.ClientSize = new System.Drawing.Size(1300, 844);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panelCabecalho);
@@ -532,5 +557,7 @@ namespace WindowsFormsPaoDoce.Views
         private System.Windows.Forms.Button btnBusca;
         private System.Windows.Forms.TextBox txtBusca;
         private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.ComboBox cmbCategoria;
+        private System.Windows.Forms.Label label6;
     }
 }
