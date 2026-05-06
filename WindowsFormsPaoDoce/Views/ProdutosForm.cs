@@ -53,7 +53,7 @@ namespace WindowsFormsPaoDoce.Views
             txtPreco.Clear();
             txtQuantidade.Clear();
             txtEstoqueMinimo.Clear();
-            txtBusca.Clear(); 
+            txtBusca.Clear();
 
             chkAtivo.Checked = false;
 
