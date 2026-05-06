@@ -44,9 +44,9 @@ namespace WindowsFormsPaoDoce.Views
             this.panelCabecalho.Controls.Add(this.lblTitulo);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
-            this.panelCabecalho.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelCabecalho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelCabecalho.Name = "panelCabecalho";
-            this.panelCabecalho.Size = new System.Drawing.Size(1146, 118);
+            this.panelCabecalho.Size = new System.Drawing.Size(1019, 94);
             this.panelCabecalho.TabIndex = 0;
             // 
             // lblSubtitulo
@@ -54,7 +54,7 @@ namespace WindowsFormsPaoDoce.Views
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblSubtitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lblSubtitulo.Location = new System.Drawing.Point(36, 74);
+            this.lblSubtitulo.Location = new System.Drawing.Point(32, 59);
             this.lblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubtitulo.Name = "lblSubtitulo";
             this.lblSubtitulo.Size = new System.Drawing.Size(338, 21);
@@ -66,7 +66,7 @@ namespace WindowsFormsPaoDoce.Views
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(30, 18);
+            this.lblTitulo.Location = new System.Drawing.Point(27, 14);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(249, 37);
@@ -85,11 +85,11 @@ namespace WindowsFormsPaoDoce.Views
             this.grpCadastro.Controls.Add(this.txtNome);
             this.grpCadastro.Controls.Add(this.lblNome);
             this.grpCadastro.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.grpCadastro.Location = new System.Drawing.Point(30, 146);
-            this.grpCadastro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpCadastro.Location = new System.Drawing.Point(27, 117);
+            this.grpCadastro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpCadastro.Name = "grpCadastro";
-            this.grpCadastro.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpCadastro.Size = new System.Drawing.Size(1080, 185);
+            this.grpCadastro.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpCadastro.Size = new System.Drawing.Size(960, 148);
             this.grpCadastro.TabIndex = 1;
             this.grpCadastro.TabStop = false;
             this.grpCadastro.Text = "Dados";
@@ -100,10 +100,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnLimpar.Location = new System.Drawing.Point(795, 105);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLimpar.Location = new System.Drawing.Point(707, 84);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(150, 55);
+            this.btnLimpar.Size = new System.Drawing.Size(133, 44);
             this.btnLimpar.TabIndex = 8;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
@@ -117,10 +117,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.btnExcluir.ForeColor = System.Drawing.Color.White;
-            this.btnExcluir.Location = new System.Drawing.Point(630, 105);
-            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExcluir.Location = new System.Drawing.Point(560, 84);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(150, 55);
+            this.btnExcluir.Size = new System.Drawing.Size(133, 44);
             this.btnExcluir.TabIndex = 7;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
@@ -133,10 +133,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnEditar.Enabled = false;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnEditar.Location = new System.Drawing.Point(465, 105);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEditar.Location = new System.Drawing.Point(413, 84);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(150, 55);
+            this.btnEditar.Size = new System.Drawing.Size(133, 44);
             this.btnEditar.TabIndex = 6;
             this.btnEditar.Text = "Atualizar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -148,10 +148,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnSalvar.Location = new System.Drawing.Point(300, 105);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSalvar.Location = new System.Drawing.Point(267, 84);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(150, 55);
+            this.btnSalvar.Size = new System.Drawing.Size(133, 44);
             this.btnSalvar.TabIndex = 5;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
@@ -163,8 +163,8 @@ namespace WindowsFormsPaoDoce.Views
             this.chkAtivo.Checked = true;
             this.chkAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAtivo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.chkAtivo.Location = new System.Drawing.Point(22, 105);
-            this.chkAtivo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkAtivo.Location = new System.Drawing.Point(20, 84);
+            this.chkAtivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Size = new System.Drawing.Size(71, 27);
             this.chkAtivo.TabIndex = 4;
@@ -174,17 +174,17 @@ namespace WindowsFormsPaoDoce.Views
             // txtDescricao
             // 
             this.txtDescricao.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDescricao.Location = new System.Drawing.Point(690, 45);
-            this.txtDescricao.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDescricao.Location = new System.Drawing.Point(613, 36);
+            this.txtDescricao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(358, 30);
+            this.txtDescricao.Size = new System.Drawing.Size(319, 30);
             this.txtDescricao.TabIndex = 3;
             // 
             // lblDescricao
             // 
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDescricao.Location = new System.Drawing.Point(562, 49);
+            this.lblDescricao.Location = new System.Drawing.Point(500, 39);
             this.lblDescricao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(87, 23);
@@ -194,17 +194,17 @@ namespace WindowsFormsPaoDoce.Views
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNome.Location = new System.Drawing.Point(112, 45);
-            this.txtNome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNome.Location = new System.Drawing.Point(100, 36);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(418, 30);
+            this.txtNome.Size = new System.Drawing.Size(372, 30);
             this.txtNome.TabIndex = 1;
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblNome.Location = new System.Drawing.Point(22, 49);
+            this.lblNome.Location = new System.Drawing.Point(20, 39);
             this.lblNome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(61, 23);
@@ -220,8 +220,8 @@ namespace WindowsFormsPaoDoce.Views
             this.gridDados.ColumnHeadersHeight = 36;
             this.gridDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridDados.EnableHeadersVisualStyles = false;
-            this.gridDados.Location = new System.Drawing.Point(30, 354);
-            this.gridDados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.gridDados.Location = new System.Drawing.Point(27, 283);
+            this.gridDados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridDados.MultiSelect = false;
             this.gridDados.Name = "gridDados";
             this.gridDados.ReadOnly = true;
@@ -229,9 +229,10 @@ namespace WindowsFormsPaoDoce.Views
             this.gridDados.RowHeadersWidth = 51;
             this.gridDados.RowTemplate.Height = 30;
             this.gridDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridDados.Size = new System.Drawing.Size(1080, 385);
+            this.gridDados.Size = new System.Drawing.Size(960, 308);
             this.gridDados.TabIndex = 2;
             this.gridDados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDados_CellClick);
+            this.gridDados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridDados_CellContentClick);
             // 
             // btnVoltar
             // 
@@ -239,10 +240,10 @@ namespace WindowsFormsPaoDoce.Views
             this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnVoltar.Location = new System.Drawing.Point(900, 762);
-            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnVoltar.Location = new System.Drawing.Point(800, 610);
+            this.btnVoltar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(210, 55);
+            this.btnVoltar.Size = new System.Drawing.Size(187, 44);
             this.btnVoltar.TabIndex = 3;
             this.btnVoltar.Text = "Voltar ao Menu";
             this.btnVoltar.UseVisualStyleBackColor = false;
@@ -250,16 +251,16 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // FormExemplo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1146, 843);
+            this.ClientSize = new System.Drawing.Size(1019, 674);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.gridDados);
             this.Controls.Add(this.grpCadastro);
             this.Controls.Add(this.panelCabecalho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FormExemplo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

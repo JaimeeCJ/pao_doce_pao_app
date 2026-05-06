@@ -131,5 +131,10 @@ namespace WindowsFormsPaoDoce.Views
             btnEditar.Enabled = false;
             btnExcluir.Enabled = false;
         }
+
+        private void gridDados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
