@@ -2,9 +2,12 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using WindowsFormsPaoDoce.Core;
 using WindowsFormsPaoDoce.Services;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace WindowsFormsPaoDoce.Views
 {
@@ -54,7 +57,8 @@ namespace WindowsFormsPaoDoce.Views
         {
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
-
+            string senhaHash = HashService.GerarHash(senha);
+                
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(conexao)) 
@@ -65,7 +69,7 @@ namespace WindowsFormsPaoDoce.Views
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn); 
                     cmd.Parameters.AddWithValue("@login", login);
-                    cmd.Parameters.AddWithValue("@senha", senha);
+                    cmd.Parameters.AddWithValue("@senha", senhaHash);
 
                     MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -109,6 +113,25 @@ namespace WindowsFormsPaoDoce.Views
             else
             {
                 txtSenha.UseSystemPasswordChar = true;
+            }
+        }
+
+        public static class HashService
+        {
+            public static string GerarHash(string texto)
+            {
+                using (SHA256  sha256 = SHA256.Create())
+                {
+                    byte[] bytes =
+                        sha256.ComputeHash(Encoding.UTF8.GetBytes(texto));
+                    StringBuilder builder = new StringBuilder();
+
+                    foreach (byte b in bytes)
+                        builder.Append(b.ToString("x2"));
+
+                    return builder.ToString();
+                   
+                }
             }
         }
     }
