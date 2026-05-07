@@ -142,6 +142,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\MovimentacaoService.cs" />
     <Compile Include="Views\CategoriasForm.cs">
       <SubType>Form</SubType>
     </Compile>
