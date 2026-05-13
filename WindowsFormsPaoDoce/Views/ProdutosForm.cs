@@ -115,10 +115,6 @@ namespace WindowsFormsPaoDoce.Views
 
         }
 
-        private void textBox2_TextChanged(object sender, System.EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
