@@ -48,7 +48,7 @@ namespace WindowsFormsPaoDoce.Views
             this.txtPreco = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkAtiv = new System.Windows.Forms.CheckBox();
             this.txtDescricaoProduto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,7 +63,6 @@ namespace WindowsFormsPaoDoce.Views
             // 
             this.panelCabecalho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(181)))), ((int)(((byte)(95)))));
             this.panelCabecalho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCabecalho.Controls.Add(this.btnVoltar);
             this.panelCabecalho.Controls.Add(this.grpCadastro);
             this.panelCabecalho.Controls.Add(this.lblTitulo);
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
@@ -78,7 +77,7 @@ namespace WindowsFormsPaoDoce.Views
             this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnVoltar.Location = new System.Drawing.Point(1041, 17);
+            this.btnVoltar.Location = new System.Drawing.Point(37, 762);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(234, 42);
             this.btnVoltar.TabIndex = 6;
@@ -251,7 +250,7 @@ namespace WindowsFormsPaoDoce.Views
             this.groupBox1.Controls.Add(this.txtPreco);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtId);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.chkAtiv);
             this.groupBox1.Controls.Add(this.txtDescricaoProduto);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -428,19 +427,20 @@ namespace WindowsFormsPaoDoce.Views
             this.txtId.TabIndex = 6;
             this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
-            // checkBox1
+            // chkAtiv
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.checkBox1.Location = new System.Drawing.Point(25, 155);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(85, 32);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Ativo";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkAtiv.AutoSize = true;
+            this.chkAtiv.Checked = true;
+            this.chkAtiv.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAtiv.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.chkAtiv.Location = new System.Drawing.Point(25, 155);
+            this.chkAtiv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkAtiv.Name = "chkAtiv";
+            this.chkAtiv.Size = new System.Drawing.Size(85, 32);
+            this.chkAtiv.TabIndex = 4;
+            this.chkAtiv.Text = "Ativo";
+            this.chkAtiv.UseVisualStyleBackColor = true;
+            this.chkAtiv.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // txtDescricaoProduto
             // 
@@ -502,11 +502,13 @@ namespace WindowsFormsPaoDoce.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1300, 844);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panelCabecalho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "ProdutosForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Produtos — Diogo";
@@ -539,7 +541,7 @@ namespace WindowsFormsPaoDoce.Views
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnLimpa;
         private System.Windows.Forms.Button btnCadastrar;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkAtiv;
         private System.Windows.Forms.TextBox txtDescricaoProduto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

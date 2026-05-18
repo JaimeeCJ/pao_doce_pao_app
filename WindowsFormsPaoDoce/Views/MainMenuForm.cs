@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
 using WindowsFormsPaoDoce.Core;
@@ -105,12 +106,22 @@ namespace WindowsFormsPaoDoce.Views
             };
             btnSair.Click += BtnSair_Click;
 
+
+
+            Controls.Add(btnSair);
+
             painelRodape.Controls.Add(btnSair);
             painelBotoes.Controls.Add(painelRodape);
 
             Controls.Add(cabecalho);
             Controls.Add(painelBotoes);
+
+
+
         }
+      
+
+       
 
         private static Control CriarBotaoModulo(string titulo, string descricao, Size tamanho, Point posicao, Action abrirTela)
         {
@@ -193,7 +204,7 @@ namespace WindowsFormsPaoDoce.Views
         private void BtnSair_Click(object sender, EventArgs e)
         {
             AppSession.EncerrarSessao();
-            Close();
+            Application.Exit();
         }
     }
 }

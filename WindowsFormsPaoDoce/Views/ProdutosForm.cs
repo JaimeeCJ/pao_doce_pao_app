@@ -49,7 +49,7 @@ namespace WindowsFormsPaoDoce.Views
         {
             txtId.Clear();
             txtNomeProduto.Clear();
-            txtDescricao.Clear();
+            txtDescricaoProduto.Clear();
             txtPreco.Clear();
             txtQuantidade.Clear();
             txtEstoqueMinimo.Clear();
@@ -70,9 +70,13 @@ namespace WindowsFormsPaoDoce.Views
                     conn.Open();
 
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Erro no banco de dados:\n" + ex.Message);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro: " + ex.Message);
+                    MessageBox.Show("Erro inesperado:\n" + ex.Message);
                 }
             }
         }
@@ -153,7 +157,52 @@ namespace WindowsFormsPaoDoce.Views
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+
+
+            if (string.IsNullOrWhiteSpace(txtNomeProduto.Text))
+            {
+                MessageBox.Show("Digite o nome do produto!");
+                txtNomeProduto.Focus();
+                return;
+            }
+
+            if (!decimal.TryParse(txtPreco.Text,
+                NumberStyles.Currency,
+                new CultureInfo("pt-BR"),
+                out decimal preco))
+            {
+                MessageBox.Show("Preço inválido!");
+                txtPreco.Focus();
+                return;
+            }
+
+            if (!int.TryParse(txtQuantidade.Text, out int quantidade))
+            {
+                MessageBox.Show("Quantidade inválida!");
+                txtQuantidade.Focus();
+                return;
+            }
+
+            if (!int.TryParse(txtEstoqueMinimo.Text, out int estoqueMin))
+            {
+                MessageBox.Show("Estoque mínimo inválido!");
+                txtEstoqueMinimo.Focus();
+                return;
+            }
+
+            if (preco <= 0)
+            {
+                MessageBox.Show("O preço deve ser maior que zero.");
+                return;
+            }
+
+            if (quantidade < 0)
+            {
+                MessageBox.Show("A quantidade não pode ser negativa.");
+                return;
+            }
+
+
             string nome = txtNomeProduto.Text.Trim();
            
             using (MySqlConnection conn = new MySqlConnection(conexao))
@@ -171,10 +220,10 @@ namespace WindowsFormsPaoDoce.Views
 
                     cmd.Parameters.AddWithValue("@nome", nome);
                     cmd.Parameters.AddWithValue("@descricao", txtDescricaoProduto.Text);
-                    cmd.Parameters.AddWithValue("@preco", decimal.Parse(txtPreco.Text, NumberStyles.Currency));
-                    cmd.Parameters.AddWithValue("@quantidade", int.Parse(txtQuantidade.Text));
-                    cmd.Parameters.AddWithValue("@estoqueMin", int.Parse(txtEstoqueMinimo.Text));
-                    cmd.Parameters.AddWithValue("@ativo", chkAtivo.Checked);
+                    cmd.Parameters.AddWithValue("@preco", preco);
+                    cmd.Parameters.AddWithValue("@quantidade", quantidade);
+                    cmd.Parameters.AddWithValue("@estoqueMin", estoqueMin);
+                    cmd.Parameters.AddWithValue("@ativo", Convert.ToBoolean(chkAtiv.Checked));
                     cmd.Parameters.AddWithValue("@categoria", cmbCategoria.SelectedValue);
 
 
@@ -191,9 +240,13 @@ namespace WindowsFormsPaoDoce.Views
                     ListarProdutos();
                     LimparCampos();
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Erro no banco de dados:\n" + ex.Message);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(" Erro! " + ex.Message);
+                    MessageBox.Show("Erro inesperado:\n" + ex.Message);
                 }
             }
         }
@@ -214,7 +267,7 @@ namespace WindowsFormsPaoDoce.Views
                 txtPreco.Text = dgvProdutos.Rows[e.RowIndex].Cells["preco_unitario"].Value.ToString();
                 txtQuantidade.Text = dgvProdutos.Rows[e.RowIndex].Cells["quantidade_atual"].Value.ToString();
                 txtEstoqueMinimo.Text = dgvProdutos.Rows[e.RowIndex].Cells["estoque_minimo"].Value.ToString();
-                chkAtivo.Checked = Convert.ToBoolean(dgvProdutos.Rows[e.RowIndex].Cells["ativo"].Value);
+                chkAtiv.Checked = Convert.ToBoolean(dgvProdutos.Rows[e.RowIndex].Cells["ativo"].Value);
             }
         
     }
@@ -250,7 +303,21 @@ namespace WindowsFormsPaoDoce.Views
                 return;
             }
 
-            
+
+            if (preco <= 0)
+            {
+                MessageBox.Show("O preço deve ser maior que zero.");
+                return;
+            }
+
+            if (quantidade < 0)
+            {
+                MessageBox.Show("A quantidade não pode ser negativa.");
+                return;
+            }
+
+
+
             DialogResult resultado = MessageBox.Show(
                 $"Deseja atualizar o produto:\n\nID: {id}\nNome: {txtNomeProduto.Text}?",
                 "Confirmar atualização",
@@ -281,11 +348,11 @@ namespace WindowsFormsPaoDoce.Views
 
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@nome", txtNomeProduto.Text);
-                    cmd.Parameters.AddWithValue("@descricao", txtDescricao.Text);
+                    cmd.Parameters.AddWithValue("@descricao", txtDescricaoProduto.Text);
                     cmd.Parameters.AddWithValue("@preco", preco);
                     cmd.Parameters.AddWithValue("@quantidade", quantidade);
                     cmd.Parameters.AddWithValue("@estoqueMin", estoqueMin);
-                    cmd.Parameters.AddWithValue("@ativo", chkAtivo.Checked);
+                    cmd.Parameters.AddWithValue("@ativo", chkAtiv.Checked);
                    
                     int linhasAfetadas = cmd.ExecuteNonQuery();
 
@@ -300,9 +367,13 @@ namespace WindowsFormsPaoDoce.Views
                         MessageBox.Show("Nenhum produto foi atualizado. Verifique o ID.");
                     }
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Erro no banco de dados:\n" + ex.Message);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro real: " + ex.Message);
+                    MessageBox.Show("Erro inesperado:\n" + ex.Message);
                 }
             }
         
@@ -329,7 +400,14 @@ namespace WindowsFormsPaoDoce.Views
                     string sql = "DELETE FROM produtos WHERE id = @id";
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+
+                    if (!int.TryParse(txtId.Text, out int id))
+                    {
+                        MessageBox.Show("Selecione um produto.");
+                        return;
+                    }
+
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();
 
@@ -337,9 +415,13 @@ namespace WindowsFormsPaoDoce.Views
                     ListarProdutos();
                     LimparCampos();
                 }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Erro no banco de dados:\n" + ex.Message);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro real: " + ex.Message);
+                    MessageBox.Show("Erro inesperado:\n" + ex.Message);
                 }
             }
     }
@@ -366,7 +448,7 @@ namespace WindowsFormsPaoDoce.Views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Erro: " + ex.Message);
+                    MessageBox.Show("Erro ao buscar produto:\n" + ex.Message);
                 }
             }
         }
@@ -391,9 +473,13 @@ namespace WindowsFormsPaoDoce.Views
 
                     dgvProdutos.DataSource = dt;
                 }
-                catch
+                catch (MySqlException ex)
                 {
-                    
+                    MessageBox.Show("Erro no banco de dados:\n" + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro inesperado:\n" + ex.Message);
                 }
             }
         }
@@ -445,6 +531,11 @@ namespace WindowsFormsPaoDoce.Views
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
