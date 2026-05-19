@@ -19,7 +19,6 @@ namespace WindowsFormsPaoDoce.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProdutosForm));
             this.panelCabecalho = new System.Windows.Forms.Panel();
-            this.btnVoltar = new System.Windows.Forms.Button();
             this.grpCadastro = new System.Windows.Forms.GroupBox();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -31,6 +30,7 @@ namespace WindowsFormsPaoDoce.Views
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
@@ -71,19 +71,6 @@ namespace WindowsFormsPaoDoce.Views
             this.panelCabecalho.Name = "panelCabecalho";
             this.panelCabecalho.Size = new System.Drawing.Size(1300, 77);
             this.panelCabecalho.TabIndex = 1;
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnVoltar.Location = new System.Drawing.Point(37, 762);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(234, 42);
-            this.btnVoltar.TabIndex = 6;
-            this.btnVoltar.Text = "Voltar ao Menu";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // grpCadastro
             // 
@@ -232,6 +219,19 @@ namespace WindowsFormsPaoDoce.Views
             this.lblTitulo.Text = "Cadastro de Produtos";
             this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnVoltar.Location = new System.Drawing.Point(1039, 760);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(234, 42);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar ao Menu";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label6);
@@ -281,7 +281,7 @@ namespace WindowsFormsPaoDoce.Views
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(127, 102);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(127, 36);
+            this.cmbCategoria.Size = new System.Drawing.Size(149, 36);
             this.cmbCategoria.TabIndex = 18;
             this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -297,9 +297,10 @@ namespace WindowsFormsPaoDoce.Views
             // 
             // btnExclui
             // 
-            this.btnExclui.BackColor = System.Drawing.Color.DarkRed;
+            this.btnExclui.BackColor = System.Drawing.Color.Red;
             this.btnExclui.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExclui.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExclui.ForeColor = System.Drawing.Color.White;
             this.btnExclui.Location = new System.Drawing.Point(633, 105);
             this.btnExclui.Name = "btnExclui";
             this.btnExclui.Size = new System.Drawing.Size(150, 55);
@@ -483,7 +484,7 @@ namespace WindowsFormsPaoDoce.Views
             this.dgvProdutos.ColumnHeadersHeight = 36;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProdutos.EnableHeadersVisualStyles = false;
-            this.dgvProdutos.Location = new System.Drawing.Point(37, 323);
+            this.dgvProdutos.Location = new System.Drawing.Point(15, 323);
             this.dgvProdutos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvProdutos.MultiSelect = false;
             this.dgvProdutos.Name = "dgvProdutos";
@@ -492,7 +493,7 @@ namespace WindowsFormsPaoDoce.Views
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 30;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1194, 376);
+            this.dgvProdutos.Size = new System.Drawing.Size(1258, 376);
             this.dgvProdutos.TabIndex = 5;
             this.dgvProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellContentClick);
             // 

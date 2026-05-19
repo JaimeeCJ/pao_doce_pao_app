@@ -105,10 +105,10 @@ namespace WindowsFormsPaoDoce.Views
                 dgvProdutos.Columns["preco_unitario"].HeaderText = "Preço";
                 dgvProdutos.Columns["preco_unitario"].DefaultCellStyle.Format = "C2";
                 dgvProdutos.Columns["categoria_id"].HeaderText = "Código Categoria";
-                dgvProdutos.Columns["criado_em"].HeaderText = "Criado em";
-                dgvProdutos.Columns["atualizado_em"].HeaderText = "Atualizado em";
+                dgvProdutos.Columns["criado_em"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                dgvProdutos.Columns["atualizado_em"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
 
-                dgvProdutos.Columns["quantidade_atual"].Visible = false;
+                dgvProdutos.Columns["quantidade_atual"].HeaderText = "Quantidade";
             }
         }
 
@@ -213,10 +213,13 @@ namespace WindowsFormsPaoDoce.Views
                     string sql = @"INSERT INTO produtos
                  (nome, descricao, preco_unitario, quantidade_atual, estoque_minimo, ativo, categoria_id, criado_em, atualizado_em)
                  VALUES
-                  (@nome, @descricao, @preco, @quantidade, @estoqueMin, @ativo, @categoria, NOW(), NOW())";
+                  (@nome, @descricao, @preco, @quantidade, @estoqueMin, @ativo, @categoria, @criado, @atualizado)";
 
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                    DateTime agora = DateTime.Now;
+
 
                     cmd.Parameters.AddWithValue("@nome", nome);
                     cmd.Parameters.AddWithValue("@descricao", txtDescricaoProduto.Text);
@@ -225,6 +228,9 @@ namespace WindowsFormsPaoDoce.Views
                     cmd.Parameters.AddWithValue("@estoqueMin", estoqueMin);
                     cmd.Parameters.AddWithValue("@ativo", Convert.ToBoolean(chkAtiv.Checked));
                     cmd.Parameters.AddWithValue("@categoria", cmbCategoria.SelectedValue);
+                    cmd.Parameters.AddWithValue("@criado", agora);
+                    cmd.Parameters.AddWithValue("@atualizado", agora);
+
 
 
                     if (string.IsNullOrWhiteSpace(txtNomeProduto.Text))
@@ -268,7 +274,10 @@ namespace WindowsFormsPaoDoce.Views
                 txtQuantidade.Text = dgvProdutos.Rows[e.RowIndex].Cells["quantidade_atual"].Value.ToString();
                 txtEstoqueMinimo.Text = dgvProdutos.Rows[e.RowIndex].Cells["estoque_minimo"].Value.ToString();
                 chkAtiv.Checked = Convert.ToBoolean(dgvProdutos.Rows[e.RowIndex].Cells["ativo"].Value);
+                cmbCategoria.SelectedValue = dgvProdutos.Rows[e.RowIndex].Cells["categoria_id"].Value;
             }
+
+
         
     }
 
@@ -341,7 +350,7 @@ namespace WindowsFormsPaoDoce.Views
                     quantidade_atual = @quantidade,
                     estoque_minimo = @estoqueMin,
                     ativo = @ativo,
-                    atualizado_em = NOW()
+                    atualizado_em = @atualizado
                     WHERE id = @id";
 
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -353,7 +362,9 @@ namespace WindowsFormsPaoDoce.Views
                     cmd.Parameters.AddWithValue("@quantidade", quantidade);
                     cmd.Parameters.AddWithValue("@estoqueMin", estoqueMin);
                     cmd.Parameters.AddWithValue("@ativo", chkAtiv.Checked);
-                   
+                    cmd.Parameters.AddWithValue("@atualizado", DateTime.Now);
+
+
                     int linhasAfetadas = cmd.ExecuteNonQuery();
 
                     if (linhasAfetadas > 0)
@@ -383,35 +394,53 @@ namespace WindowsFormsPaoDoce.Views
         private void btnExclui_Click_1(object sender, EventArgs e)
         {
 
+            if (!int.TryParse(txtId.Text, out int id))
+            {
+                MessageBox.Show("Selecione um produto.");
+                return;
+            }
+
             DialogResult resultado = MessageBox.Show(
-               " Tem certeza que deseja excluir?"," Confirmar exclusão",
-               MessageBoxButtons.YesNo,
-               MessageBoxIcon.Warning
-               );
+                "Tem certeza que deseja excluir?",
+                "Confirmar exclusão",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
             if (resultado != DialogResult.Yes)
                 return;
+
             using (MySqlConnection conn = new MySqlConnection(conexao))
             {
                 try
                 {
                     conn.Open();
 
-                    string sql = "DELETE FROM produtos WHERE id = @id";
+                    string verificaSql = "SELECT COUNT(*) FROM movimentacoes WHERE produto_id = @id";
 
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlCommand verificaCmd = new MySqlCommand(verificaSql, conn);
+                    verificaCmd.Parameters.AddWithValue("@id", id);
 
-                    if (!int.TryParse(txtId.Text, out int id))
+                    int totalMov = Convert.ToInt32(verificaCmd.ExecuteScalar());
+
+                    if (totalMov > 0)
                     {
-                        MessageBox.Show("Selecione um produto.");
+                        MessageBox.Show(
+                            "Não é possível excluir este produto porque ele possui movimentações cadastradas."
+                        );
                         return;
                     }
 
+                    
+                    string sql = "DELETE FROM produtos WHERE id = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@id", id);
 
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Produto excluído com sucesso!");
+
                     ListarProdutos();
                     LimparCampos();
                 }
@@ -424,6 +453,8 @@ namespace WindowsFormsPaoDoce.Views
                     MessageBox.Show("Erro inesperado:\n" + ex.Message);
                 }
             }
+        
+    
     }
 
         private void btnBusca_Click(object sender, EventArgs e)
@@ -532,7 +563,7 @@ namespace WindowsFormsPaoDoce.Views
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+    
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
